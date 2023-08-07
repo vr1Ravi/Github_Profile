@@ -1,13 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&family=Roboto:wght@100;300&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,400&display=swap");
 .header {
   background-color: #010409;
   padding-bottom: 1rem;
   height: 6.5rem;
   display: flex;
+  color: white;
 }
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Ubuntu', sans-serif;
+
 .header_Left {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin-left: 1rem;
+  height: inherit;
+  justify-content: space-between;
+  flex: 0.25;
   .header_LeftUpper {
     display: flex;
     align-items: center;
@@ -19,5 +29,47 @@
       font-size: 2rem;
       margin-right: 1rem;
     }
+    > svg:nth-child(1) {
+      border: 1px solid #6d6d6d;
+      padding: 4px;
+      border-radius: 6px;
+      color: grey;
+    }
+    > svg:nth-child(2) {
+      font-size: 2.3rem;
+    }
   }
+
+  .header_LeftLower {
+    display: flex;
+    margin-bottom: 0.5rem;
+    margin-left: 10px;
+    width: 100%;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > svg {
+        margin-right: 0.5rem;
+        color: gray;
+      }
+      > p {
+        font-family: "Roboto", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+span {
+  margin-left: 8px;
+  background-color: #1f1f1f;
+  width: 2rem;
+  text-align: center;
+  border-radius: 25px;
+  padding: 3px 0;
+  font-size: 13px;
+  height: 1.5rem;
 }
