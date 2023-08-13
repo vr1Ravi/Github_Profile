@@ -73,3 +73,49 @@ span {
   font-size: 13px;
   height: 1.5rem;
 }
+
+.header_Right {
+  flex: 0.75;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  > svg {
+    position: relative;
+    left: 2rem;
+    font-size: 1.5rem;
+    color: gray;
+  }
+  > input {
+    width: 39%;
+    height: 30%;
+    padding: 1rem;
+    margin-right: 10rem;
+    border: 1px solid #6d6d6d;
+    background: transparent;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    padding-left: 2rem;
+  }
+  > div {
+    margin-right: 2rem;
+    width: 2rem;
+    object-fit: contain;
+    > img {
+      width: inherit;
+      border-radius: 50%;
+    }
+  }
+}
+
+.inutBox {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #6d6d6d;
+  > svg {
+    color: gray;
+  }
+}
