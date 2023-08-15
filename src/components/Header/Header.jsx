@@ -5,24 +5,35 @@ import { BsBook } from "react-icons/bs";
 import { RiGitRepositoryLine } from "react-icons/ri";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../userSlice";
+import { useSelector } from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
 const Header = () => {
   const [inputVal, setInputVal] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
   const handleChange = (e) => {
-    // setInputVal(e.target.value);
     const name = e.target.value;
     setInputVal(name);
   };
   useEffect(() => {
     if (inputVal === "") return;
-    console.log(inputVal);
     const timer = setTimeout(async () => {
-      const res = await fetch(`https://api.github.com/users/${inputVal}`);
-      const data = await res.json();
-      console.log(data);
+      try {
+        const res = await fetch(`https://api.github.com/users/${inputVal}`);
+        const data = await res.json();
+        console.log(data);
+        data.login && dispatch(setUser(data));
+      } catch (error) {
+        dispatch(setUser(null));
+      }
     }, 1000);
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputVal]);
   window.addEventListener("resize", () => {
     setWindowWidth(window.innerWidth);
@@ -41,7 +52,8 @@ const Header = () => {
             <BsBook /> <p>Overview</p>
           </div>
           <div className="repos">
-            <RiGitRepositoryLine /> <p>Repositories</p> <span>12</span>
+            <RiGitRepositoryLine /> <p>Repositories</p>{" "}
+            <span>{user ? user.public_repos : 0}</span>
           </div>
         </div>
       </div>
@@ -49,10 +61,11 @@ const Header = () => {
       <div className="header_Right">
         {windowWidth > 900 ? (
           <>
+            {" "}
             <BiSearchAlt2 />
             <input
               type="text"
-              // value={inputVal}
+              placeholder="Search User"
               onChange={(e) => handleChange(e)}
             />
           </>
@@ -64,10 +77,11 @@ const Header = () => {
         )}
 
         <div className="prifile_img">
-          <img
-            src="https://avatars.githubusercontent.com/u/103517405?v=4"
-            alt=""
-          />
+          {user ? (
+            <img src={user.avatar_url} alt="" />
+          ) : (
+            <FaUserCircle size={"2rem"} />
+          )}
         </div>
       </div>
     </div>
