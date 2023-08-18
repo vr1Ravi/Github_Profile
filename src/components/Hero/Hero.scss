@@ -6,13 +6,50 @@
 }
 .leftHero {
   flex: 0.3;
-  background-color: #f5f5f5;
+  border-right: 1px solid #30363d;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  //   align-items: center;
+  align-items: center;
+  color: white;
   > img {
     width: 18rem;
     border-radius: 100%;
+  }
+  > .details {
+    margin-right: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    > h1 {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    > p {
+      margin-top: 1rem;
+    }
+    > p:nth-child(2) {
+      color: #636a74;
+    }
+    > p:nth-child(3) {
+      border-bottom: 1px solid #30363d;
+    }
+  }
+  > .address {
+    text-align: start;
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+}
+.social {
+  > p {
+    margin-top: 1rem;
+    font-size: small;
+    color: #7d8571;
+    > span {
+      background: transparent;
+      color: white;
+    }
   }
 }
